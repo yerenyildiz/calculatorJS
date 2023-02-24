@@ -3,7 +3,7 @@ const screen = document.querySelector(".screen")
 const backspaceBtn = document.querySelector(".backspace")
 const clearBtn = document.querySelector(".clear")
 const dotBtn = document.querySelector(".dot")
-const mathBtn = document.querySelectorAll(".buttons")
+const mathBtn = document.querySelectorAll(".mathButton")
 ////functionality
 //clear screen
 clearBtn.addEventListener("click", function(){
@@ -22,6 +22,10 @@ mathBtn.forEach(btn => btn.addEventListener("click", function(btn){
     screen.textContent += btn.target.textContent} else {
         //calculation 
         let userInput = screen.textContent.trim()
+        while (userInput[0] === "0"){
+            console.log(userInput)
+           userInput = userInput.substring(1)
+        }
         screen.textContent = Function("return " + userInput)();
     }
     }));
